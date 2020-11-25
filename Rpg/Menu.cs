@@ -10,6 +10,8 @@ namespace Rpg
         //bool choice = false;
         public async Task Interface()
         {
+            Presentation p = new Presentation();
+
             int choice;
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(" Back to 80's " + '\n' + '\n');
@@ -26,7 +28,10 @@ namespace Rpg
                     break;
                 case 2:
                     Console.WriteLine("Choix numero 2 !" + '\n');
-                    TextIntro();
+                    p.TextIntro();
+                    p.Gobelin();
+                    p.Demon();
+                    Console.WriteLine("Et un ennemi mystère ?" +'\n');
                     Console.WriteLine("Revenir au jeu ou quitter ?" + '\n' + "1 back to game, 2 Quit");
                     choice = Convert.ToInt16(Console.ReadLine());
                     Console.Clear();
@@ -54,12 +59,6 @@ namespace Rpg
                 }
             //}
         } //end of Interface
-
-        public void TextIntro()
-        {
-            Console.WriteLine("Back to 80's est un jeu qui revient aux sources, à l'orgine des premeirs jeux de rôle" + '\n');
-            Console.WriteLine("Vous avez la possibilité d'incarner un Mage ou Guerrier pour affronter des ennemis divers et variés!" + '\n');
-        }
 
     } //end of Menu
 }
