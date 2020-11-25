@@ -13,20 +13,45 @@ namespace Rpg
         private int CurrentLevel;
         public static int NbGame;
 
-
         public Game()
         {
-            hero = new Player(Player.Role.Warrior, "Brutus");
-            CurrentLevel = 0;
+            Presentation p = new Presentation();
+            int choice;
+            Console.WriteLine("Type 1 for became a Warrior ! 2 for  Mage !" + '\n');
+            choice = Convert.ToInt16(Console.ReadLine());
+            //Console.Clear();
+            switch (choice)
+            {
+                case 1:
+                    p.Warrior();
+                    hero = new Player(Player.Role.Warrior, "Brutus");
+                    break;
+                case 2:
+                    p.Mage();
+                    hero = new Player(Player.Role.Mage, "Merlin");
+                    break;
+                default:
+                    Console.WriteLine("Erreur veuillez le chiffre indique");
+                    break;
+            }
+            Lancement();
+        }
+
+        public void Lancement() { 
+
+            //CurrentLevel = 0;
 
             Monstres = new List<Monster>();
-
-            Monstres.Add(new Monster(Monster.Role.Gobelin, "troll apprenti"));
-            Monstres.Add(new Monster(Monster.Role.Gobelin, "troll sauvage"));
+            Monstres.Add(new Monster(Monster.Role.Gobelin, "Troll apprenti"));
+            Monstres.Add(new Monster(Monster.Role.Gobelin, "Troll sauvage"));
             Monstres.Add(new Monster(Monster.Role.Demon, "Lucifer"));
 
+            var r = new Random();
+            int test = r.Next(Monstres.Count);
+            //Console.WriteLine(Monstres[test] +" est votre nouvel ennemi");
+
             Combat();
-        }
+        } //end of Game
 
 
         private void Combat()
@@ -36,7 +61,10 @@ namespace Rpg
 
             while (p.Hp> 0 && m.Hp>0)
             {
+                Console.WriteLine(p.Name + " a " + p.Hp + " Hp");
+                Console.WriteLine(m.Name + " a " + m.Hp + " Hp" + '\n');
                 Console.WriteLine("Choisissez : 1:Atk 2:Inventaire 3:Fuir");
+
                 int choix = choixMenu(3);
                 switch(choix)
                 {
@@ -54,15 +82,30 @@ namespace Rpg
 
             if (p.Hp>0)
             {
-                Console.WriteLine("Bravo");
+                Console.WriteLine('\n' +"Congratulation");
                 hero.Inventory.Add(m.Loot);
+                Console.WriteLine("Open your inventory there is something new...");
+                Console.WriteLine("It's just the beginning, now you have few more battles !" + '\n');
             }
             else
             {
                 Console.WriteLine("Looser!");
                 Quit();
             }
+            Lancement();
         } //end of Combat
+
+        private void Attaque()
+        {
+            var rand = new Random();
+
+            Player p = hero;
+            Monster m = Monstres[CurrentLevel];
+
+            m.Hp -= Math.Clamp(p.Atk - m.Def, 0, 150);
+            p.Hp -= Math.Clamp(m.Atk - p.Def, 0, 150);
+
+        }//end of Attaque
 
         private void OpenInventory()
         {
@@ -83,18 +126,6 @@ namespace Rpg
                 hero.Inventory.RemoveAt(choix - 1);
         }
 
-        private void Attaque()
-        {
-            Player p = hero;
-            Monster m = Monstres[CurrentLevel];
-
-            m.Hp -= Math.Clamp(p.Atk - m.Def,0,100);
-            p.Hp -= Math.Clamp(m.Atk - p.Def,0,100);
-
-            Console.WriteLine(p.Name + " a encore " + p.Hp + " Hp");
-            Console.WriteLine(m.Name + " a encore " + m.Hp + " Hp" + '\n');
-        }
-
         public int choixMenu(int max)
         {
             Boolean choixValide = false;
@@ -113,8 +144,6 @@ namespace Rpg
             }
             return (int)choix;
         }
-
-
 
         public static void Quit()
         {

@@ -13,21 +13,21 @@ namespace Rpg
             {
                 case Role.Gobelin:
                     Hp = 100;
-                    Atk = 20;
+                    Atk = 50;
                     Def = 60;
                     Loot = new Item(Item.Obj.Heal,"Heal",1,1);
                     break;
                 case Role.Demon:
                     Hp = 180;
-                    Atk = 100;
+                    Atk = 60;
                     Def = 60;
-                    Loot = new Item(Item.Obj.Atk,"Sword",1,1);
+                    Loot = new Item(Item.Obj.Atk,"Knife",1,1);
                     break;
                 case Role.Boss:
                     Hp = 200;
-                    Atk = 300;
+                    Atk = 80;
                     Def = 90;
-                    Loot = new Item(Item.Obj.Atk, "BOMBE", 1, 1);
+                    Loot = new Item(Item.Obj.Atk, "Sword", 1, 1);
                     break;
             }
         }
