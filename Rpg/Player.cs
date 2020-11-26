@@ -13,15 +13,15 @@ namespace Rpg
         public Player(Role role, string name) : base(role, name)
         {
             Inventory = new List<Item>();
-            Inventory.Add(new Item(Item.Obj.Heal, "Heal", 5, 2));
-            Inventory.Add(new Item(Item.Obj.Atk, "Atk", 5, 2));
+            Inventory.Add(new Item(Item.Obj.Heal, "Heal", 20, 3));
+            Inventory.Add(new Item(Item.Obj.Atk, "Knife", 20, 4));
 
             switch (role)
             {
                 case Role.Warrior:
                     Hp = 50;
                     Atk = 100;
-                    Def = 40;
+                    Def = 50;
                     break;
                 case Role.Mage:
                     Hp = 30;
