@@ -6,8 +6,8 @@ namespace Rpg
     {
         static void Main(string[] args)
         {
-            Menu m = new Menu();
-            m.Interface();
+            Menu menu = new Menu();
+            menu.Interface();
         }
     }
 }

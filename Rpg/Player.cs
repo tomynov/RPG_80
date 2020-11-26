@@ -6,14 +6,12 @@ namespace Rpg
 {
     class Player : Person
     {
-        public Role r;
-
         public List<Item> Inventory;
 
         public Player(Role role, string name) : base(role, name)
         {
             Inventory = new List<Item>();
-            Inventory.Add(new Item(Item.Obj.Heal, "Heal", 20, 3));
+            Inventory.Add(new Item(Item.Obj.Heal, "Heal", 35, 2));
             Inventory.Add(new Item(Item.Obj.Atk, "Knife", 20, 4));
 
             switch (role)
@@ -24,9 +22,9 @@ namespace Rpg
                     Def = 50;
                     break;
                 case Role.Mage:
-                    Hp = 30;
-                    Atk = 150;
-                    Def = 60;
+                    Hp = 25;
+                    Atk = 120;
+                    Def = 59;
                     break;
 
             }

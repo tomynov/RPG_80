@@ -13,15 +13,17 @@ namespace Rpg
         private Boolean IsGameOver;
         private string ArenaName;
         private int CurrentLevel;
+        Menu menu = new Menu();
+
         //SoundPlayer sound = new SoundPlayer(Machine_Heart.mp3);
 
         public Game()
         {
             Presentation p = new Presentation();
+            /// Permet au joueur de choisir sa classe ////
             Console.WriteLine("Type 1 for became a Warrior ! 2 for  Mage !" + '\n');
             int choice = choixMenu(2);
             //choice = Convert.ToInt16(Console.ReadLine());
-            //Console.Clear();
             switch (choice)
             {
                 case 1:
@@ -77,9 +79,8 @@ namespace Rpg
                 Console.WriteLine(p.Name + " a " + p.Hp + " Hp");
                 Console.WriteLine(m.Name + " a " + m.Hp + " Hp" + '\n');
                 Console.WriteLine("Choisissez : 1:Atk 2:Inventaire 3:Fuir");
-
                 int choice = choixMenu(3);
-                switch(choice)
+                switch (choice)
                 {
                     case 1:
                         Attaque();
@@ -110,6 +111,21 @@ namespace Rpg
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Vous avez fini le jeu !!");
+                    Console.WriteLine("1: Revenir au menu : 1  2: Quitter");
+                    int choice = choixMenu(3);
+                    switch (choice)
+                    {
+                        case 1:
+                            menu.Interface();
+                            break;
+                        case 2:
+                            Quit();
+                            break;
+                        default:
+                            Console.WriteLine("Erreur veuillez entrer le chiffre indique");
+                            break;
+                    }
+                    Quit();
                 }
             }
             else
@@ -153,15 +169,16 @@ namespace Rpg
         {
             Boolean choixValide = false;
             int choix = 0;
-            while (choixValide != true)
+            while (!choixValide)
             {
-                choix = int.Parse(Console.ReadLine());
-                if ((int)choix > 0 && (int)choix <= max)
+                string saisie = Console.ReadLine();
+                if (int.TryParse(saisie, out choix))
                 {
                     choixValide = true;
                 }
                 else
                 {
+                    choixValide = false;
                     Console.WriteLine(choix + " Entrée incorrecte. Veuillez réessayer.");
                 }
             }
