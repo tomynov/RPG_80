@@ -41,7 +41,7 @@ namespace Rpg
                     }
                     else if (choice == 2)
                     {
-                        Console.WriteLine("ok thanks you");
+                        Console.WriteLine("Ok thanks you");
                         Environment.Exit(0);
                     }
                     break;
@@ -51,7 +51,7 @@ namespace Rpg
                     Environment.Exit(0);
                     break;
                 default:
-                    Console.WriteLine("Erreur veuillez le chiffre indique");
+                    Console.WriteLine("Erreur veuillez entrer le chiffre indique");
                     //Task.Delay(4000);
                     //Console.Clear();
                     Interface();

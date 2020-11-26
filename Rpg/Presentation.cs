@@ -8,7 +8,7 @@ namespace Rpg
     {
         public void TextIntro()
         {
-            Console.WriteLine("Back to 80's est un jeu qui revient aux sources, à l'orgine des premeirs jeux de rôle" + '\n');
+            Console.WriteLine("Back to 80's est un jeu qui revient aux sources, à l'orgine des premiers jeux de rôle" + '\n');
             Console.WriteLine("Vous avez la possibilité d'incarner un Mage ou Guerrier pour affronter des ennemis divers et variés!" + '\n');
         }
         public void Warrior()
