@@ -48,6 +48,10 @@ namespace Rpg
                         Environment.Exit(0);
                     }
                     break;
+                case 3:
+                    Console.WriteLine("Bye");
+                    Environment.Exit(0);
+                    break;
                 default:
                     Console.WriteLine("Erreur veuillez entrer le chiffre indique");
                     //Task.Delay(4000);
