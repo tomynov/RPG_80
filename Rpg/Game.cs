@@ -46,7 +46,7 @@ namespace Rpg
          *  
          * private void playSound()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
+            SoundPlayer simpleSound = new SoundPlayer("Machine_Heart.mp3");
             simpleSound.Play();
         }
         *
