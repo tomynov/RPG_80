@@ -15,7 +15,7 @@ namespace Rpg
                     Hp = 100;
                     Atk = 60;
                     Def = 60;
-                    Loot = new Item(Item.Obj.Heal,"Potion",20,2);
+                    Loot = new Item(Item.Obj.Heal,"Potion",20,2); //Item que possede le monstre
                     break;
                 case Role.Demon:
                     Hp = 180;

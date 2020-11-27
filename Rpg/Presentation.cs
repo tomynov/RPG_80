@@ -6,6 +6,7 @@ namespace Rpg
 {
     class Presentation
     {
+        //// Presentation du jeu et des différents personnages ////
         public void TextIntro()
         {
             Console.WriteLine("Back to 80's est un jeu qui revient aux sources, à l'orgine des premiers jeux de rôle" + '\n');

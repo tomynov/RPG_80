@@ -13,6 +13,7 @@ namespace Rpg
         {
             Presentation p = new Presentation();
             int choice;
+
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(" Back to 80's " + '\n' + '\n');
             Console.WriteLine("Press 1 for Play, 2 for more Informations, or 3 for Quit, " + '\n');
@@ -20,6 +21,7 @@ namespace Rpg
             //int choice = g.choixMenu(3); ;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Clear();
+
             switch (choice)
             {
                 case 1:
@@ -28,7 +30,7 @@ namespace Rpg
                     break;
                 case 2:
                     Console.WriteLine("Choix numero 2 !" + '\n');
-                    ///// Presention des divers perso
+                    ///// Presention des divers perso /////
                     p.TextIntro();
                     p.Gobelin();
                     p.Demon();
@@ -45,11 +47,6 @@ namespace Rpg
                         Console.WriteLine("Ok thanks you");
                         Environment.Exit(0);
                     }
-                    break;
-                case 3:
-                    Console.WriteLine("Choix numero 3 !" + '\n');
-                    Console.WriteLine("Bye");
-                    Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("Erreur veuillez entrer le chiffre indique");

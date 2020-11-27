@@ -51,7 +51,8 @@ namespace Rpg
         }
         *
         */
-        public void Lancement() {
+        public void Lancement() //Initialise le combat en ajoutant les monstres dans une liste
+        {
 
             //playSound(); //Lancement de la musique d'ambiance
 
@@ -73,13 +74,15 @@ namespace Rpg
         {
             Player p = hero;
             Monster m = Monstres[CurrentLevel];
+            Presentation pr = new Presentation();
+            DateTime t1 = DateTime.Now;
 
             while (p.Hp> 0 && m.Hp>0)
             {
                 Console.WriteLine(p.Name + " a " + p.Hp + " Hp");
                 Console.WriteLine(m.Name + " a " + m.Hp + " Hp" + '\n');
                 Console.WriteLine("Choisissez : 1:Atk 2:Inventaire 3:Fuir");
-                int choice = choixMenu(3);
+                int choice = choixMenu(4);
                 switch (choice)
                 {
                     case 1:
@@ -89,12 +92,19 @@ namespace Rpg
                         OpenInventory();
                         break;
                     case 3:
+                        Console.WriteLine("Sage décision...");
                         Quit();
+                        break;
+                    case 4:
+                        pr.Boss(); //texte cache
+                        break;
+                    default:
+                        Console.WriteLine("Ce n'est pas le bon chiffre" + '\n');
                         break;
                 }
             }
 
-            if (p.Hp>0)
+            if (p.Hp>0) //le joueur est encore en vie
             {
                 Console.WriteLine('\n' +"Congratulation" + '\n');
 
@@ -107,13 +117,15 @@ namespace Rpg
                 CurrentLevel++; //On passe au monstre suivant
                 hero.Inventory.Add(m.Loot); //L'ennemi battu lache un item prédéfinit
 
-                if (CurrentLevel == 4)
+                if (CurrentLevel == 4) //Cas où le joueur a battu le boss
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Vous avez fini le jeu !!");
+                    DateTime t2 = DateTime.Now;
+                    Console.WriteLine(t2 - t1+ "sec: Recommencer et cette fois soyez plus rapide !");
                     Console.WriteLine("1: Revenir au menu : 1  2: Quitter");
                     int choice = choixMenu(3);
-                    switch (choice)
+                    switch (choice) //Permet au joueur de recommencer ou de quitter la partie
                     {
                         case 1:
                             menu.Interface();
@@ -133,7 +145,7 @@ namespace Rpg
                 Console.WriteLine("Looser!");
                 Quit();
             }
-            Lancement();
+            Lancement(); //Permet d'enchainer les combats
         } //end of Combat
 
         private void Attaque()

@@ -10,9 +10,9 @@ namespace Rpg
 
         public Player(Role role, string name) : base(role, name)
         {
-            Inventory = new List<Item>();
+            Inventory = new List<Item>(); //Liste d'item que possède le joueur au début du jeu
             Inventory.Add(new Item(Item.Obj.Heal, "Heal", 35, 2));
-            Inventory.Add(new Item(Item.Obj.Atk, "Knife", 20, 4));
+            Inventory.Add(new Item(Item.Obj.Atk, "Knife", 25, 4));
 
             switch (role)
             {
